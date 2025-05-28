@@ -30,7 +30,7 @@ public class CustomerDto extends UsersDto {
         this.totalFineAmount = totalFineAmount;
     }
 
-    public static CustomerDto fromEntity(Customer customer) {
+    public static CustomerDto toDto(Customer customer) {
         List<Long> loanIds = customer.getLoans().stream()
                 .map(Loan::getId)
                 .collect(Collectors.toList());
