@@ -1,12 +1,13 @@
 package com.backendjavatown.services.dto;
 
 import com.backendjavatown.models.Employee;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class EmployeeDto extends UsersDto {
 
     public EmployeeDto(Long id, String firstName, String lastName, String email) {
