@@ -23,14 +23,14 @@ public abstract class Document {
 
     private String titre;
 
-    private int numberOfCopies;
+    private int copies;
 
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
     private List<LoanDetail> loanDetails = new ArrayList<>();
 
-    public Document(String titre, int numberOfCopies) {
+    public Document(String titre, int copies) {
         this.titre = titre;
-        this.numberOfCopies = numberOfCopies;
+        this.copies = copies;
     }
 
     public abstract int getMaxLoanDays();
