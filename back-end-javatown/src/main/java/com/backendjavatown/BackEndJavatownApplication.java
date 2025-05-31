@@ -1,6 +1,8 @@
 package com.backendjavatown;
 
+import com.backendjavatown.models.Book;
 import com.backendjavatown.models.Cd;
+import com.backendjavatown.models.Dvd;
 import com.backendjavatown.services.EmployeeService;
 import com.backendjavatown.utils.TcpServer;
 import org.springframework.boot.CommandLineRunner;
@@ -28,8 +30,11 @@ public class BackEndJavatownApplication {
 
 
             Cd cd = new Cd("Cd Test", 5, "Abdou", 3, "Pop");
-            employeeService.create(cd);
-
+            Dvd dvd = new Dvd("Dvd Test", 5, "Abdou", 3);
+            Book book = new Book("Book Test", 5, 2023, "Abdou", "Publisher", 300);
+            employeeService.createCD(cd);
+            employeeService.createDVD(dvd);
+            employeeService.creatBook(book);
         };
     }
 }
