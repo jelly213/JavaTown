@@ -29,9 +29,12 @@ public class BackEndJavatownApplication {
             TcpServer.createTcpServer("JavaTown");
 
 
+            // Create sample CD, DVD, and Book objects
             Cd cd = new Cd("Cd Test", 5, "Abdou", 3, "Pop");
             Dvd dvd = new Dvd("Dvd Test", 5, "Abdou", 3);
             Book book = new Book("Book Test", 5, 2023, "Abdou", "Publisher", 300);
+
+            // Create CD, DVD, and Book using the EmployeeService
             employeeService.createCD(cd);
             employeeService.createDVD(dvd);
             employeeService.creatBook(book);
