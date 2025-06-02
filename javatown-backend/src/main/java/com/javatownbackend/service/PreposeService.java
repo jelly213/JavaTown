@@ -8,9 +8,9 @@ import com.javatownbackend.service.dto.EmprunteurDto;
 import com.javatownbackend.service.execptions.CreerNouveauDocumentException;
 import com.javatownbackend.service.execptions.DocumentNonDisponibleException;
 import com.javatownbackend.service.execptions.EmprunteurNonDisponibleException;
-import com.javatownbackend.service.execptions.PreposeException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -19,35 +19,18 @@ import java.util.stream.Collectors;
 public class PreposeService {
     private final EmprunteurRepository emprunteurRepository;
     private final DocumentRepository documentRepository;
-    private final PreposeRepository preposeRepository;
     private final CdRepository cdRepository;
     private final DvdRepository dvdRepository;
     private final LivreRepository livreRepository;
     private final DtoConverter dtoConverter;
 
-    public PreposeService(PreposeRepository preposeRepository,
-                          DocumentRepository documentRepository,
-                          EmprunteurRepository emprunteurRepository,
-                          CdRepository cdRepository,
-                          DvdRepository dvdRepository,
-                          LivreRepository livreRepository,
-                          DtoConverter dtoConverter) {
+    public PreposeService(DocumentRepository documentRepository, EmprunteurRepository emprunteurRepository, CdRepository cdRepository, DvdRepository dvdRepository, LivreRepository livreRepository, DtoConverter dtoConverter) {
         this.livreRepository = livreRepository;
         this.cdRepository = cdRepository;
-        this.preposeRepository = preposeRepository;
         this.dvdRepository = dvdRepository;
         this.documentRepository = documentRepository;
         this.emprunteurRepository = emprunteurRepository;
         this.dtoConverter = dtoConverter;
-    }
-
-    @Transactional
-    public void creerNouveauPrepose(String name, String email, String phoneNumber) throws PreposeException {
-        try {
-            preposeRepository.save(new Prepose(name, email, phoneNumber));
-        } catch (Exception e) {
-            throw new PreposeException("Erreur lors de la création du préposé: " + e.getMessage());
-        }
     }
 
     @Transactional
